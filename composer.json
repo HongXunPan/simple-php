@@ -1,0 +1,30 @@
+{
+    "name": "hongxunpan/simple-framework",
+    "description": "a simple framework for php",
+    "type": "project",
+    "require": {
+        "php": "^8.0.20"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "HongXunPan",
+            "email": "me@kangxuanpeng.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "scripts": {
+        "clearCache": [
+            "rm -rf bootstrap/cache/*"
+        ],
+        "autoload": "@composer dump-autoload",
+        "post-install-cmd": [
+            "@autoload",
+            "@clearCache"
+        ],
+        "post-update-cmd": [
+            "@autoload",
+            "@clearCache"
+        ]
+    }
+}
