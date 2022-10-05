@@ -3,7 +3,8 @@
     "description": "a simple framework for php",
     "type": "project",
     "require": {
-        "php": "^8.0.20"
+        "php": "^8.0.20",
+        "hongxunpan/php-tools": "dev-main"
     },
     "license": "MIT",
     "authors": [
