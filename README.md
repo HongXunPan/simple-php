@@ -2,7 +2,7 @@
 
 ### install
 
-`composer create-project hongxunpan/simple-framework`
+`composer create-project hongxunpan/simple-framework --dev`
 
 ### visit
 
