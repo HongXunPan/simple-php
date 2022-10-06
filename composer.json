@@ -4,7 +4,7 @@
     "type": "project",
     "require": {
         "php": "^8.0.20",
-        "hongxunpan/php-tools": "dev-main"
+        "hongxunpan/php-tools": "1.3.1"
     },
     "license": "MIT",
     "authors": [
