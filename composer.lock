@@ -4,23 +4,64 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d5b000e55d84650f199814d5db599a03",
+    "content-hash": "f99d78c91e352c26904930fe1e052296",
     "packages": [
         {
-            "name": "hongxunpan/php-tools",
-            "version": "1.3.1",
+            "name": "hongxunpan/db",
+            "version": "1.0.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/HongXunPan/php-tools.git",
-                "reference": "b064119f6c130800b35f6addf12f8b3e4a711227"
+                "url": "https://github.com/HongXunPan/db-connection.git",
+                "reference": "5d922b86ad24b4d5d34f979eb0d2aabe6b1d8387"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/HongXunPan/php-tools/zipball/b064119f6c130800b35f6addf12f8b3e4a711227",
-                "reference": "b064119f6c130800b35f6addf12f8b3e4a711227",
+                "url": "https://api.github.com/repos/HongXunPan/db-connection/zipball/5d922b86ad24b4d5d34f979eb0d2aabe6b1d8387",
+                "reference": "5d922b86ad24b4d5d34f979eb0d2aabe6b1d8387",
+                "shasum": ""
+            },
+            "require-dev": {
+                "symfony/var-dumper": "^6.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "HongXunPan\\DB\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "HongXunPan",
+                    "email": "me@kangxuanpeng.com"
+                }
+            ],
+            "description": "connections for db, such as mysql & redis ...",
+            "support": {
+                "issues": "https://github.com/HongXunPan/db-connection/issues",
+                "source": "https://github.com/HongXunPan/db-connection/tree/1.0.1"
+            },
+            "time": "2022-10-12T17:30:12+00:00"
+        },
+        {
+            "name": "hongxunpan/php-tools",
+            "version": "2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/HongXunPan/php-tools.git",
+                "reference": "6d75d620b2d283c86a8421eba8c8209f143cadc0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/HongXunPan/php-tools/zipball/6d75d620b2d283c86a8421eba8c8209f143cadc0",
+                "reference": "6d75d620b2d283c86a8421eba8c8209f143cadc0",
                 "shasum": ""
             },
             "require": {
+                "hongxunpan/db": "1.0.1",
                 "php": ">=5.6"
             },
             "require-dev": {
@@ -45,9 +86,9 @@
             "description": "common php tools and functions",
             "support": {
                 "issues": "https://github.com/HongXunPan/php-tools/issues",
-                "source": "https://github.com/HongXunPan/php-tools/tree/1.3.1"
+                "source": "https://github.com/HongXunPan/php-tools/tree/2.0.0"
             },
-            "time": "2022-10-06T06:03:28+00:00"
+            "time": "2022-10-12T20:52:01+00:00"
         }
     ],
     "packages-dev": [],
