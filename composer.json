@@ -5,7 +5,8 @@
     "require": {
         "php": "^8.0.20",
         "hongxunpan/php-tools": "2.1.0",
-        "hongxunpan/db": "1.0.2"
+        "hongxunpan/db": "1.0.2",
+        "symfony/var-dumper": "6.0.x-dev"
     },
     "license": "MIT",
     "authors": [
@@ -15,6 +16,14 @@
         }
     ],
     "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "HongXunPan\\Framework\\": "framework/",
+            "App\\": "app/"
+        },
+        "files": [
+        ]
+    },
     "scripts": {
         "clearCache": [
             "rm -rf bootstrap/cache/*"
