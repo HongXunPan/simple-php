@@ -12,11 +12,11 @@ namespace HongXunPan\Framework\Route;
  */
 class RouteRegister
 {
-    private $route;
+    private RouteOne $route;
 
     public function __construct(string $method, string $uri, mixed $action, $middlewares)
     {
-        $uri = $this->formatSlash($uri);
+        $uri = RouteOne::formatSlash($uri);
         $route = [
             'uri' => $uri,
             'method' => $method,
@@ -25,35 +25,8 @@ class RouteRegister
             'middlewares' => $middlewares,
 //            'domain' => null,
         ];
-        $this->route = new class (...$route) {
-            public function __construct(
-                public string       $method,
-                public string       $uri,
-                public mixed        $action,
-                public string       $name,
-                public array        $middlewares = [],
-                public string|array $domain = ''
-            )
-            {
-            }
-
-            public function toArray(): array
-            {
-                return get_object_vars($this);
-            }
-        };
+        $this->route = new RouteOne(...$route);
         $this->updateRoute();
-    }
-
-    public static function formatSlash(string $str): string
-    {
-        if (!str_starts_with($str, '/')) {
-            $str = '/' . $str;
-        }
-        if (strlen($str) > 1) {
-            $str = rtrim($str, '/');
-        }
-        return $str;
     }
 
     private function updateRoute()
@@ -96,7 +69,7 @@ class RouteRegister
     public function prefix(string $prefix): RouteRegister
     {
         Route::removeRoute($this->route->uri);
-        $newUri = $this->formatSlash($prefix) . $this->formatSlash($this->route->uri);
+        $newUri = RouteOne::formatSlash($prefix) . RouteOne::formatSlash($this->route->uri);
         return new self($this->route->method, $newUri, $this->route->action, $this->route->middlewares);
     }
 }

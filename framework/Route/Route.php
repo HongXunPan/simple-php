@@ -60,4 +60,19 @@ class Route extends SingleAbstract
         }
         return $routeList[$uri];
     }
+
+    public static function run()
+    {
+        $request = [
+            'method' => strtolower($_SERVER['REQUEST_METHOD'] ?? ''),
+            'domain' => $_SERVER['SERVER_NAME'] ?? '',
+            'uri' => RouteOne::formatSlash(explode('?', $_SERVER['REQUEST_URI'] ?? '')[0]),
+        ];
+        $route = Route::getRouteByUri($request['uri']);
+        if (!$route) {
+            throw new RouteException('not found', 404);
+        }
+        return (new RouteOne(...$route))->validate(...$request)->run();
+    }
+
 }

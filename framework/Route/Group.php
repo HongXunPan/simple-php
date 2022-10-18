@@ -27,7 +27,9 @@ class Group
                 public array  $middlewares = []
             )
             {
-                $this->prefix = RouteRegister::formatSlash($this->prefix);
+                if (!empty($this->prefix)) {
+                    $this->prefix = RouteOne::formatSlash($this->prefix);
+                }
             }
 
             public function toArray(): array
@@ -47,7 +49,7 @@ class Group
 
     private function addRoute(string $method, string $uri, array|string|callable $callable): RouteRegister
     {
-        $uri = $this->group->prefix . RouteRegister::formatSlash($uri);
+        $uri = $this->group->prefix . RouteOne::formatSlash($uri);
         return new RouteRegister($method, $uri, $callable, $this->group->middlewares);
     }
 
@@ -60,7 +62,7 @@ class Group
         $subGroup = [];
         $subGroup['prefix'] = $this->group->prefix;
         if (!empty($options['prefix']) && is_string($options['prefix'])) {
-            $subGroup['prefix'] = RouteRegister::formatSlash($options['prefix']) . $this->group->prefix;
+            $subGroup['prefix'] = RouteOne::formatSlash($options['prefix']) . $this->group->prefix;
         }
         if (!empty($options['middlewares']) && is_array($options['middlewares'])) {
             $subGroup['middlewares'] = array_merge($this->group->middlewares, $options['middlewares']);
