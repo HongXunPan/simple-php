@@ -4,6 +4,7 @@ namespace HongXunPan\Framework\Route;
 
 use Closure;
 use HongXunPan\Framework\Core\SingleAbstract;
+use Opis\Closure\SerializableClosure;
 
 /**
  * @method static RouteRegister any(string $path, array|string|callable $action)
@@ -46,11 +47,6 @@ class Route extends SingleAbstract
         }
     }
 
-    public static function getRouteByUri(string $uri)
-    {
-        return self::getInstance()->routeList[$uri] ?? null;
-    }
-
     public static function getRouteByName(string $name): array
     {
         $routeList = self::getInstance()->routeList;
@@ -75,4 +71,38 @@ class Route extends SingleAbstract
         return (new RouteOne(...$route))->validate(...$request)->run();
     }
 
+    public static function getRouteByUri(string $uri)
+    {
+        return self::getInstance()->routeList[$uri] ?? null;
+    }
+
+    public static function loadAllRouteByFile($path)
+    {
+        $files = glob($path . '/*.php');
+        foreach ($files as $file) {
+            require $file;
+        }
+    }
+
+    public static function cache($dir, $fileName = 'route.php')
+    {
+        $routeList = self::getInstance()->routeList;
+
+        foreach ($routeList as &$route) {
+            if ($route['action'] instanceof Closure) {
+                $route['action'] = new SerializableClosure($route['action']);
+            }
+        }
+        if (!file_exists($dir)) {
+            mkdir($dir);
+        }
+        $file = $dir . '/' . $fileName;
+        file_put_contents($file, serialize($routeList));
+    }
+
+    public static function loadCache($file)
+    {
+        $cache = unserialize(file_get_contents($file));
+        self::getInstance()->routeList = $cache;
+    }
 }

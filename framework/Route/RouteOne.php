@@ -51,9 +51,13 @@ class RouteOne
     public function run()
     {
         $handler = function () {
+            if (is_callable($this->action)) {
+                return call_user_func($this->action);
+            }
             //make
             return call_user_func([new $this->action[0], $this->action[1]]);
         };
+//        dump(array_reverse($this->middlewares), $this->middlewares);
         foreach (array_reverse($this->middlewares) as $middleware) {
             $handler = function () use ($handler, $middleware) {
                 if (is_callable($middleware)) {
@@ -69,8 +73,8 @@ class RouteOne
                 return call_user_func([new $middleware, 'handle'], $handler);
             };
         }
+//        dump($handler);
         return call_user_func($handler);
     }
-
 
 }

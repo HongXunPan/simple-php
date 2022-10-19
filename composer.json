@@ -6,7 +6,8 @@
         "php": "^8.0.20",
         "hongxunpan/php-tools": "2.1.0",
         "hongxunpan/db": "1.0.2",
-        "symfony/var-dumper": "6.0.x-dev"
+        "symfony/var-dumper": "6.0.x-dev",
+        "opis/closure": "3.6.x-dev"
     },
     "license": "MIT",
     "authors": [
