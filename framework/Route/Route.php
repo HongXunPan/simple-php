@@ -3,7 +3,7 @@
 namespace HongXunPan\Framework\Route;
 
 use Closure;
-use HongXunPan\Framework\Core\SingleAbstract;
+use HongXunPan\Framework\Core\SingletonAbstract;
 use Opis\Closure\SerializableClosure;
 
 /**
@@ -18,7 +18,7 @@ use Opis\Closure\SerializableClosure;
  * Author: HongXunPan
  * Email: me@kangxuanpeng.com
  */
-class Route extends SingleAbstract
+class Route extends SingletonAbstract
 {
     public array $routeList = [];
 

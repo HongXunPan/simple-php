@@ -62,11 +62,12 @@ class Group
         $subGroup = [];
         $subGroup['prefix'] = $this->group->prefix;
         if (!empty($options['prefix']) && is_string($options['prefix'])) {
-            $subGroup['prefix'] = RouteOne::formatSlash($options['prefix']) . $this->group->prefix;
+            $subGroup['prefix'] ??= RouteOne::formatSlash($options['prefix']) . $this->group->prefix;
         }
         if (!empty($options['middlewares']) && is_array($options['middlewares'])) {
-            $subGroup['middlewares'] = array_merge($this->group->middlewares, $options['middlewares']);
+            $subGroup['middlewares'] ??= array_merge($this->group->middlewares, $options['middlewares']);
         }
+//        $subGroup['prefix'] ??= $options['prefix'];
         $childGroup = new self($subGroup);
         $callback($childGroup);
     }
