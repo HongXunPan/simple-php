@@ -1,5 +1,5 @@
 {
-    "name": "hongxunpan/simple-framework",
+    "name": "hongxunpan/simple-php",
     "description": "a simple framework for php",
     "type": "project",
     "require": {
@@ -7,7 +7,8 @@
         "hongxunpan/php-tools": "2.1.0",
         "hongxunpan/db": "1.0.2",
         "symfony/var-dumper": "6.0.x-dev",
-        "opis/closure": "3.6.x-dev"
+        "opis/closure": "3.6.x-dev",
+        "illuminate/container": "9.x-dev"
     },
     "license": "MIT",
     "authors": [

@@ -2,7 +2,7 @@
 
 ### install
 
-`composer create-project hongxunpan/simple-framework --dev`
+`composer create-project hongxunpan/simple-php --dev`
 
 ### visit
 
