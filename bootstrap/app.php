@@ -1,15 +1,14 @@
 <?php
 
-use HongXunPan\Framework\Core\App;
+use HongXunPan\Framework\Core\Application as App;
 use HongXunPan\Framework\Route\Route;
 
-$app = new App();
+$app = App::getInstance();
 
-$app->run(function () {
-    Route::loadAllRouteByFile('../routes');
-
-    $res = Route::getInstance()->run();
-    dump($res);
+$app->run(function (App $app) {
+    $app->init(dirname(__DIR__));
+    $app->loadRoute();
+    $app->setResponse(Route::getInstance()->run())->send();
 });
 
 return $app;
